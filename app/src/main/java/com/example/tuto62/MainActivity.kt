@@ -1,5 +1,6 @@
  package com.example.tuto62
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -21,6 +22,8 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -65,7 +68,9 @@ fun EcranPrincipal( modifier: Modifier = Modifier) {
             modifier = Modifier.fillMaxWidth()
         )
         TitreApplication(modifier= Modifier.fillMaxWidth())
-
+        GrilleTuiles(
+            modifier = Modifier
+        )
     }
 
 
@@ -80,7 +85,10 @@ fun EcranPrincipal( modifier: Modifier = Modifier) {
      ) {
          Text(
 
-             text = "Tape le Lapin"
+             text = "Tape le Lapin",
+
+             fontSize = 40.sp,
+             fontWeight = FontWeight.Bold
          )
      }
 
@@ -100,7 +108,10 @@ fun EcranPrincipal( modifier: Modifier = Modifier) {
              contentAlignment = Alignment.Center
          ) {
              Text(
-                 text = "0 pafs"
+                 text = "0 pafs",
+                 color = Color.Green,
+                 fontSize = 40.sp,
+                 fontWeight = FontWeight.Bold
              )
          }
          Box(
@@ -108,7 +119,10 @@ fun EcranPrincipal( modifier: Modifier = Modifier) {
              contentAlignment = Alignment.Center
          ){
              Text(
-                 text = "0 flops"
+                 text = "0 flops",
+                 color = Color.Red,
+                 fontSize = 40.sp,
+                 fontWeight = FontWeight.Bold
              )
          }
 
@@ -116,6 +130,7 @@ fun EcranPrincipal( modifier: Modifier = Modifier) {
      }
  }
 
+ @SuppressLint("SuspiciousIndentation")
  @Composable
  private fun GrilleTuiles(modifier: Modifier) {
     var positionLapin = Random.nextInt(9)
@@ -125,13 +140,14 @@ fun EcranPrincipal( modifier: Modifier = Modifier) {
      ) {
          for (i in 0..2) {
              Row(
-                 modifier = Modifier
+                 modifier = Modifier.fillMaxSize().weight(1f)
              ) {
                  for (j in 0..2) {
                    var indexthuile = i*3 +j
                      Thuile(
                          estlapin = positionLapin ==indexthuile,
-                         modifier = Modifier.padding((6.dp))
+                         modifier = Modifier.padding(6.dp).fillMaxSize().weight(1f)
+
                      )
                  }
              }
