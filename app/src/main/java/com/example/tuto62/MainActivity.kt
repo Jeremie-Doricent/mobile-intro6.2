@@ -60,8 +60,17 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun EcranPrincipal(modifier: Modifier = Modifier) {
+    var nbpafs :Int =0
+    var nbflop : Int =0
     Column(modifier = modifier.fillMaxSize()) {
-        AffichageScores(modifier = Modifier.fillMaxWidth().weight(1f))
+        AffichageScores(
+        nbpafs =nbpafs,
+            nbflop =nbflop,
+
+            modifier = Modifier.fillMaxWidth().weight(1f)
+
+
+        )
         TitreApplication(modifier = Modifier.fillMaxWidth().weight(1f))
         GrilleTuiles(modifier = Modifier.fillMaxWidth().weight(5f))
     }
@@ -82,7 +91,13 @@ private fun TitreApplication(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun AffichageScores(modifier: Modifier = Modifier) {
+private fun AffichageScores(
+
+    modifier: Modifier = Modifier,
+    nbpafs: Int,
+    nbflop: Int,
+
+    ) {
     Row(
         modifier = modifier.background(
             Brush.verticalGradient(
@@ -97,7 +112,7 @@ private fun AffichageScores(modifier: Modifier = Modifier) {
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "0 Pafs",
+                text = "$nbpafs Pafs",
                 color = Color(0xFF00AA00),
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Bold
@@ -108,7 +123,7 @@ private fun AffichageScores(modifier: Modifier = Modifier) {
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "0 Flops",
+                text = "$nbflop Flops",
                 color = Color(0xFFCC1100),
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Bold
